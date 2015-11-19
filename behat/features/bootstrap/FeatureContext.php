@@ -35,4 +35,37 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iShouldNotHaveAccessToThePage() {
     $this->assertSession()->statusCodeEquals('403');
   }
+
+  /**
+   * @When I visit the all recipes page
+   */
+  public function iVisitTheAllRecipesPage()
+  {
+    $this->iVisitTheHomepage();
+    sleep(15);
+    $element = $this->getSession()->getPage();
+    $element->clickLink("פתיחת תפריט  מתכונים");
+    $element->clickLink("כל המתכונים");
+  }
+
+  /**
+   * @When I click on the first recipe
+   */
+  public function iClickOnTheFirstRecipe() {
+    $element = $this->getSession()->getPage();
+    sleep(2);
+    $recipe = $element->find('css',"#recipe-0 > recipe-box > div > div > a");
+    $recipe->click();
+  }
+
+  /**
+   * @Then I should be able to see the recipe
+   */
+  public function iShouldBeAbleToSeeTheRecipe() {
+    $element = $this->getSession()->getPage();
+    $element->getText("מרכיבים");
+    sleep(3);
+  }
+
+
 }
