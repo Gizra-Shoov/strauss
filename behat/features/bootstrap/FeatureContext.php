@@ -42,30 +42,29 @@ class FeatureContext extends MinkContext implements SnippetAcceptingContext {
   public function iVisitTheAllRecipesPage()
   {
     $this->iVisitTheHomepage();
+    sleep(15);
     $element = $this->getSession()->getPage();
     $element->clickLink("פתיחת תפריט  מתכונים");
     $element->clickLink("כל המתכונים");
   }
 
   /**
-   * @When I click on the Corn muffins orange recipe
+   * @When I click on the first recipe
    */
-  public function iClickOnTheCornMuffinsOrangeRecipe()
-  {
+  public function iClickOnTheFirstRecipe() {
     $element = $this->getSession()->getPage();
     sleep(2);
-    $share = $element->find('css',"#recipe-0 > recipe-box > div > div > div > a");
-    $share->click();
+    $recipe = $element->find('css',"#recipe-0 > recipe-box > div > div > a");
+    $recipe->click();
   }
 
   /**
    * @Then I should be able to see the recipe
    */
-  public function iShouldBeAbleToSeeTheRecipe()
-  {
-    sleep(5);
+  public function iShouldBeAbleToSeeTheRecipe() {
     $element = $this->getSession()->getPage();
     $element->getText("מרכיבים");
+    sleep(3);
   }
 
 

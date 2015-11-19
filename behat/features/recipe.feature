@@ -7,5 +7,5 @@ Feature: Recipe
   Scenario: Visit the recipe
     Given I am an anonymous user
     When  I visit the all recipes page
-    And   I click on the Corn muffins orange recipe
+    And   I click on the first recipe
     Then  I should be able to see the recipe
